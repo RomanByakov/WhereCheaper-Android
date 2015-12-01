@@ -37,7 +37,7 @@ public class Settings extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_settings2);
 
         btnEdit = (Button) findViewById(R.id.edit);
         btnSave = (Button) findViewById(R.id.save);
@@ -78,7 +78,7 @@ public class Settings extends Activity {
 
                     // создаем адаптер
                     ArrayAdapter<City> adapter = new ArrayAdapter<City>(getApplicationContext(),
-                            android.R.layout.simple_list_item_single_choice, cities);
+                            R.layout.simple_list_item_single_choice, cities);
 
                     // присваиваем адаптер списку
                     lvMain.setAdapter(adapter);
