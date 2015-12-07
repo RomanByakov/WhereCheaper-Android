@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "ru.codegeek.wherecheaper"
+        applicationId "ru.codegeek.food"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
@@ -27,5 +27,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:8.1.0'
     compile 'com.android.support:design:23.0.1'
     compile 'com.loopj.android:android-async-http:1.4.9'
-    compile 'com.google.code.gson:gson:1.7.2'
+    compile 'com.google.code.gson:gson:2.2.4'
 }

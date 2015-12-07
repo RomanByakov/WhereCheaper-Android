@@ -2,9 +2,9 @@
     android:id="@android:id/text1"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeightSmall"
-    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+    android:checkMark="@drawable/custom_check"
     android:gravity="center_vertical"
-    android:checkMark="?android:attr/listChoiceIndicatorSingle"
-    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
     android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-    android:theme="@style/MyMaterialTheme"/>
+    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+    android:textColor="@android:color/black" />

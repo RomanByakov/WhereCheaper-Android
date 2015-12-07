@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.codegeek.wherecheaper" >
+    package="ru.codegeek.food" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.hardware.camera" />
 
@@ -11,11 +13,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/MyMaterialTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:label="Food&amp;Price"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,18 +26,36 @@
         </activity>
         <activity
             android:name=".BarcodeCaptureActivity"
-            android:label="Считывание штрихкода" />
+            android:label="Считывание штрихкода"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".CityActivity"
+            android:label="@string/title_activity_city"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" >
+        </activity>
+        <activity
+            android:name=".CitySelectActivity"
+            android:label="@string/title_activity_city_select"
+            android:parentActivityName=".CityActivity"
+            android:theme="@style/MyMaterialTheme" >
+            <meta-data
+                android:screenOrientation="portrait"
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.codegeek.food.CityActivity" />
+        </activity>
         <activity
             android:name=".AddProduct"
-            android:label="@string/title_activity_add_product" >
+            android:label="@string/title_activity_city"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" >
         </activity>
         <activity
-            android:name=".Settings"
-            android:label="@string/title_activity_settings" >
-        </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:name=".AddPrice"
+            android:label="@string/title_activity_city"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" >
         </activity>
     </application>
 
