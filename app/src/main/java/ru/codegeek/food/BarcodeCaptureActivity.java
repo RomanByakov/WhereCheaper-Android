@@ -270,10 +270,12 @@ public final class BarcodeCaptureActivity extends AppCompatActivity {
     }
 
     public void detectBarcode(Barcode barcode){
-        Intent data = new Intent();
-        data.putExtra(BarcodeObject, barcode);
-        setResult(CommonStatusCodes.SUCCESS, data);
-        finish();
+        if(barcode.rawValue.length() == 13) {
+            Intent data = new Intent();
+            data.putExtra(BarcodeObject, barcode);
+            setResult(CommonStatusCodes.SUCCESS, data);
+            finish();
+        }
     }
 
     /**

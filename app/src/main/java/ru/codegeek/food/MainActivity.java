@@ -26,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
     BoxAdapter boxAdapter;
     DBHelper dbHelper;
     City cityFromList;
+    LinearLayout conteiner;
+    ProgressBar progressbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -225,12 +229,21 @@ public class MainActivity extends AppCompatActivity {
             AsyncHttpClient client = new AsyncHttpClient();
             client.get("http://api.code-geek.ru:4000/products/" + barcode.displayValue, new JsonHttpResponseHandler() {
                 @Override
+                public void onStart() {
+                    super.onStart();
+                    viewPager.setCurrentItem(2);
+                    conteiner = (LinearLayout) findViewById(R.id.conteiner);
+                    progressbar = (ProgressBar) findViewById(R.id.progressBar);
+                    conteiner.setVisibility(View.GONE);
+                    progressbar.setVisibility(View.VISIBLE);
+                }
+
+                @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     super.onSuccess(statusCode, headers, response);
 
                     Gson gson = new Gson();
                     Products product = gson.fromJson(response.toString(), Products.class);
-                    viewPager.setCurrentItem(2);
                     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabbut);
                     fab.setVisibility(View.VISIBLE);
                     fab.setOnClickListener(new View.OnClickListener() {
@@ -242,8 +255,8 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
-                    LinearLayout conteiner = (LinearLayout) findViewById(R.id.conteiner);
-                    conteiner.setVisibility(View.VISIBLE);
+
+
                     TextView title = (TextView) findViewById(R.id.title);
                     title.setVisibility(View.GONE);
                     TextView name = (TextView) findViewById(R.id.name);
@@ -356,6 +369,13 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
                     super.onFailure(statusCode, headers, throwable, errorResponse);
+                }
+
+                @Override
+                public void onFinish() {
+                    super.onFinish();
+                    conteiner.setVisibility(View.VISIBLE);
+                    progressbar.setVisibility(View.GONE);
                 }
             });
         }
